@@ -119,7 +119,7 @@ async function createUser() {
   
 }
 
-//3. Change Status
+//3. Cambiar estado
 async function changeStatus(correo, estadoActual){
 
   const newState= estadoActual === 1 ? 0 : 1;
