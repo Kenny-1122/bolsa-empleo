@@ -1,5 +1,5 @@
 // Definir el API
-const API_BASE2 = "database-2.cf0cu2uguaac.us-east-2.rds.amazonaws.com"
+const API_BASE2 = "http://3.139.81.40:8000"
 
 let empresaUpdate=null;
 let tablaEmpresas;
