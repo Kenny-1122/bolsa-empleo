@@ -1,5 +1,5 @@
 //1. Definir el API
-const API_BASE = "http://127.0.0.1:8000"
+const API_BASE = "database-2.cf0cu2uguaac.us-east-2.rds.amazonaws.com"
 
 let userUpdate=null;
 
