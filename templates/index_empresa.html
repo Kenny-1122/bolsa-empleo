@@ -1,84 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gestión de Empresas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestión de Empresas</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
 
-  <h1>Empresas</h1>
-  <button onclick="openEmpresaModal()">Crear Empresa</button>
+    <h1>Empresas</h1>
+    <button onclick="openEmpresaModal()">Crear Empresa</button>
 
-  <table id="empresaTable">
-    <thead>
-      <tr>
-        <th>NIT</th>
-        <th>Nombre</th>
-        <th>Ciudad</th>
-        <th>Direccion</th>
-        <th>Correo</th>
-        <th>Teléfono</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    <table id="empresaTable">
+        <thead>
+            <tr>
+                <th>NIT</th>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Direccion</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
-  
-<div id="empresaModal" class="modal">
-    <div class="modal-content">
-      <h2 class="modal-title" id="formTitle">Crear Empresa</h2>
-      <form id="empresaForm" class="form">
+    <div id="empresaModal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title" id="formTitle">Crear Empresa</h2>
+            <form id="empresaForm" class="form">
 
-        <div class="form-group">
-          <label for="nit">NIT</label>
-          <input type="text" id="nit" required />
+                <div class="form-group">
+                    <label for="nit">NIT</label>
+                    <input type="text" id="nit" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" />
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" id="direccion" />
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" />
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" onclick="closeEmpresaModal()" class="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn-submit" id="empresaSubmitButton">Crear</button>
+                </div>
+            </form>
         </div>
-
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" required />
-        </div>
-
-        <div class="form-group">
-          <label for="ciudad">Ciudad</label>
-          <input type="text" id="ciudad" />
-        </div>
-
-        <div class="form-group">
-            <label for="direccion">Direccion</label>
-            <input type="text" id="direccion" />
-          </div>
-
-        <div class="form-group">
-          <label for="correo">Correo</label>
-          <input type="email" id="correo" />
-        </div>
-
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="text" id="telefono" />
-        </div>
-
-        <div class="form-actions">
-          <button type="button" onclick="closeEmpresaModal()" class="btn-cancel">Cancelar</button>
-          <button type="submit" class="btn-submit" id="empresaSubmitButton">Crear</button>
-        </div>
-      </form>
     </div>
-  </div>
 
- 
-  <script src="assets/js/empresa.js"></script>
+    <script src="assets/js/empresa.js"></script>
 
 </body>
 </html>

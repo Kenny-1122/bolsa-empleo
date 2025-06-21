@@ -20,10 +20,13 @@ async function fetchEmpresa() {
       e.nit,
       e.nombre,
       e.ciudad,
-      e.correo,
       e.direccion,
+      e.correo,
       e.telefono,
-      `<i class="fa-solid fa-pencil" title="Editar" onclick="openEditModal('${e.nit}')"></i>`
+      `<i class="fa-solid fa-pencil" title="Editar" onclick="openEditModal('${e.nit}')"></i>
+      &nbsp;
+      <i class="fa-solid fa-trash" style="color: red; cursor: pointer;" title="Eliminar" onclick="confirmDeleteEmpresa('${e.nit}')"></i>
+      `
     ]);
   });
 
@@ -123,6 +126,46 @@ document.getElementById("empresaForm").addEventListener("submit", async function
   }
 });
 
+//1.borrar empresa -> sweetalert
+async function confirmDeleteEmpresa(nit) {
+  const confirm = await Swal.fire({
+    title: '¿Estás seguro?',
+    text: "Esta acción no se puede deshacer.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  });
+
+  if (confirm.isConfirmed) {    //aqui llamo a la funcion deletempresa y se elimina
+    deleteEmpresa(nit);
+  }
+}
+
+
+//2.borrar empresa ->DELETE
+
+async function deleteEmpresa(nit) {
+  try {
+    const res = await fetch(`${API_BASE2}/empresa/delete-empresa/${nit}`, {
+      method: 'DELETE'
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      Swal.fire("Eliminado", result.message, "success");
+      fetchEmpresa();  // actualiza la tabla
+    } else {
+      Swal.fire("Error", result.detail, "error");
+    }
+  } catch (error) {
+    console.error(error);
+    Swal.fire("Error", "Error de comunicación con el servidor", "error");
+  }
+}
 
 // Cerrar modal al hacer click fuera
 window.onclick = function (event) {
